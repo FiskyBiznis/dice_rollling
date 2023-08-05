@@ -1,0 +1,85 @@
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+#1 Rolling 100-sided dice
+# dice.py
+# sample namesJolene Rosario Fisk Bill Fred Greg
+# sample stats 6000 20 1500 1550 200 5000
+
+import random
+from time import sleep 
+
+player_list = []
+stats_list = []
+complete_list = []
+def myFunc(e):
+  return e['Stats']
+
+
+def clear(): 
+    if name == 'nt': 
+        _ = system('cls') 
+
+def dead_dice(num_dice):
+    "Each integer in the returned list is a random number between 1 and 100, inclusive."
+    dead_result = []
+    roll = random.randint (1, 100)
+    dead_result.append(roll)
+    return dead_result
+    
+def pulled_dice(num_dice):
+    "Each integer in the returned list is a random number between 1 and 100, inclusive."
+    pulled_result = []
+    roll = random.randint (25, 100)
+    pulled_result.append(roll)
+    return pulled_result
+    
+def carry_dice(num_dice):
+    "Each integer in the returned list is a random number between 1 and 100, inclusive."
+    carry_result = []
+    roll = random.randint (50, 100)
+    carry_result.append(roll)
+    return carry_result
+
+#---App's main code block---
+#fills player list if user wants to roll a dice
+
+player_list = [item for item in input("Enter the of List Players: ").split()]
+
+#fills stats list
+print("NOTE: stats need to be in the same order as players")
+stats_list = [int(item) for item in input("Enter stats for each player:").split()]
+
+#check to make sure stats and players are equal then creates a list listing name with stats
+if len(stats_list) == len(player_list):
+    for i in range (len(player_list)):
+        complete_list.append({ "Name" : player_list[i] , "Stats" : stats_list[i]})
+else:
+    print ("Matching error:players and stats to not have the same value, please reenter and try again.")
+    
+#sorts list
+complete_list.sort(key=myFunc)
+
+# Determine the length of each row
+row_len = len(complete_list) // 3
+
+dead_list = complete_list[:row_len]
+pulled_list = complete_list[row_len:row_len*2] 
+carry_list = complete_list[row_len*2:]
+
+print("Tier 1 Roll")
+for dead in dead_list:
+    dead_result = dead_dice(i)
+    print(dead)
+    print(dead_result)
+print( )
+print("Tier 2 Roll")
+for pulled in pulled_list:
+    pulled_result = pulled_dice(i)
+    print(pulled)
+    print(pulled_result)
+print( )
+print("Tier 3 Roll")
+for carry in carry_list:
+    carry_result = carry_dice(i)
+    print(carry)
+    print(carry_result)
